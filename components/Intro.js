@@ -12,7 +12,7 @@ const TextContainer = styled.div`
 `
 export default function Intro() {
     return (
-        <FullScreenContainer background="#480CA8">
+        <FullScreenContainer background="#3a0ca3">
             <TextContainer>
                 <AppearingText>{"Hi! I'm Artur Oborski and I'm frontend developer."}</AppearingText>
             </TextContainer>

@@ -49,7 +49,7 @@ export default function AboutMe({scrollRef}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <FullScreenContainer background="#3a0ca3">
+        <FullScreenContainer background="#480CA8">
             <MediumHeader ref={startElRef}>About me</MediumHeader>
             {isOnScreen &&
             <>
