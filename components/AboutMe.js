@@ -26,11 +26,11 @@ const animationFromRight = keyframes`
 `
 const TextFromLeft = styled(Text)`
     transform: translateX(-100%);
-    animation: ${animationFromLeft} 3s linear forwards;
+    animation: ${animationFromLeft} 2.5s ease-in forwards;
 `
 const TextFromRight = styled(Text)`
     transform: translateX(100%);
-    animation: ${animationFromRight} 3s 2s linear forwards;
+    animation: ${animationFromRight} 2.5s 1.5s ease-in forwards;
 `
 export default function AboutMe({scrollRef}) {
     const [isOnScreen, setIsOnScreen] = useState(false);
@@ -38,7 +38,7 @@ export default function AboutMe({scrollRef}) {
     const startElRef = useRef();
 
     const handleScroll = () => {
-        if(startElRef.current.getBoundingClientRect().top < 40) {
+        if(startElRef.current.getBoundingClientRect().top === 0) {
             setIsOnScreen(true);
             scrollRef.current.removeEventListener('scroll', handleScroll);
         }
@@ -54,7 +54,7 @@ export default function AboutMe({scrollRef}) {
             {isOnScreen &&
             <>
                 <TextFromLeft>17 years old</TextFromLeft>
-                <TextFromRight>currently learning in secondary school</TextFromRight>
+                <TextFromRight>currently learning in high school</TextFromRight>
                 <TextFromLeft></TextFromLeft>
             </>
             }

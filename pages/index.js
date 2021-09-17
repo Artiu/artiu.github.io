@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Intro from '../components/Intro';
 import AboutMe from '../components/AboutMe';
 import { useRef } from 'react';
+import TechStack from '../components/TechStack';
 
 const Fullscreen = styled.div`
   height: 100vh;
@@ -20,6 +21,7 @@ export default function Home() {
       <Fullscreen ref={scrollEl}>
         <Intro />
         <AboutMe scrollRef={scrollEl}/>
+        <TechStack />
       </Fullscreen>
     </>
   )
