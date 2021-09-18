@@ -7,6 +7,8 @@ const Div = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding-bottom: 30px;
+    row-gap: 20px;
 `
 export default function Projects() {
     const projects = [
@@ -23,6 +25,20 @@ export default function Projects() {
             link: "https://github.com/Artiu/countries-website",
             description: "I created countries website for Frontend Mentor challenge. User can search country by name and filter by region.",
             liveLink: "https://artiu.github.io/countries-website"
+        },
+        {
+            name: "Url shortener",
+            screen: "/url-shortener.png",
+            link: "https://github.com/Artiu/url-shortener",
+            description: "fkisfksfsfasjknafksjnfasjkajknm",
+            liveLink: "https://artiu.github.io/url-shortener"
+        },
+        {
+            name: "Diarybook",
+            screen: "/diarybook.png",
+            link: "https://github.com/Artiu/diarybook",
+            description: "fkisfksfsfasjknafksjnfasjkajknm",
+            liveLink: "https://artiu.github.io/diarybook"
         }
     ];
     return (

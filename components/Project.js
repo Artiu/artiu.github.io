@@ -1,13 +1,15 @@
 import styled from "styled-components"
 
 const Div = styled.div`
-    width: 600px;
+    max-width: 720px;
     padding: 10px 20px;
     transition: all 0.3s linear;
     a > img {
-        width: 600px;
-        height: 310px;
+        width: 100%;
         margin-top: 10px;
+        @media (max-width: 750px) {
+            width: 100%;
+        }
     }
     a:last-child > img{
         width: 50px;
@@ -16,6 +18,9 @@ const Div = styled.div`
     }
     :hover {
         transform: scale(1.1);
+        @media (max-width: 750px) {
+            transform: none;
+        }
     }
 `
 const Header = styled.p`
@@ -31,7 +36,8 @@ const A = styled.a`
     text-decoration: none;
     display: flex;
     align-items: center;
-    width: 200px;
+    width: fit-content;
+    padding-right: 13px;
     padding-block: 5px;
     background-color: #2968FF;
     font-weight: 700;
@@ -49,7 +55,7 @@ export default function Project({name, screen, description, link, liveLink}) {
             <Header>{name}</Header>
             <a href={liveLink}><img src={screen} alt={`${name} screenshot`}/></a>
             <P>{description}</P>
-            <A href={link}><img src="/github.png" alt="Github logo"/>Github</A>
+            <A href={link}><img src="/github.png" alt="Github logo"/><p>Github</p></A>
         </Div>
     )
 }

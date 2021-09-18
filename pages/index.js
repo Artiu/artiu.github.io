@@ -5,6 +5,7 @@ import AboutMe from '../components/AboutMe';
 import { useRef } from 'react';
 import TechStack from '../components/TechStack';
 import Projects from '../components/Projects';
+import Footer from '../components/Footer';
 
 const Fullscreen = styled.div`
   height: 100vh;
@@ -24,6 +25,7 @@ export default function Home() {
         <AboutMe scrollRef={scrollEl}/>
         <TechStack />
         <Projects />
+        <Footer />
       </Fullscreen>
     </>
   )
