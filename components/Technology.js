@@ -11,6 +11,7 @@ const Img = styled.img`
     }
 `
 const Text = styled.p`
+    margin-top: 5px;
     font-weight: 600;
     text-align: center;
 `

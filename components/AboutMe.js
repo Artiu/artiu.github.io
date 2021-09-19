@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { FullScreenContainer } from "./styled-elements/FullScreenContainer";
 import { MediumHeader } from "./styled-elements/MediumHeader";
 import { useEffect, useState, useRef } from "react";
-import { Scroll } from "./ScrollElement";
+import Scroll from "./ScrollElement";
 
 const Text = styled.p`
     font-size: 30px;
@@ -49,7 +49,7 @@ export default function AboutMe({scrollRef}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <FullScreenContainer background="#480CA8" id="about" ref={startElRef}>
+        <FullScreenContainer background="#480CA8" ref={startElRef}>
             <MediumHeader>About me</MediumHeader>
             {isOnScreen &&
             <>
@@ -58,7 +58,7 @@ export default function AboutMe({scrollRef}) {
                 <TextFromLeft></TextFromLeft>
             </>
             }
-            <Scroll href="#technologies"/>
+            <Scroll scrollRef={scrollRef} containerRef={startElRef}/>
         </FullScreenContainer>
     )
 }

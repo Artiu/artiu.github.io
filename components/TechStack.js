@@ -11,6 +11,7 @@ const TechContainer = styled.div`
     justify-content: center;
     row-gap: 40px;
     column-gap: 50px;
+    padding-bottom: 40px;
     @media (max-width: 800px) {
         width: 100%;
         flex-direction: column;
@@ -21,7 +22,7 @@ const TechContainer = styled.div`
 export default function TechStack() {
     const technologies = ["HTML", "CSS","JS", "SASS", "TailwindCSS", "Styled components", "ReactJS", "Redux", "NextJS", "Jest"];
     return (
-        <FullScreenContainer background = "#4361ee" id="technologies">
+        <FullScreenContainer background = "#4361ee">
             <MediumHeader>Tech stack</MediumHeader>
             <TechContainer>
             {technologies.map((technology, index) => {

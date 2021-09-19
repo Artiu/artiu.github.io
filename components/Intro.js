@@ -1,7 +1,8 @@
 import { FullScreenContainer } from "./styled-elements/FullScreenContainer"
 import AppearingText from "./AppearingText"
 import styled from "styled-components"
-import { Scroll } from "./ScrollElement"
+import Scroll from "./ScrollElement"
+import { useRef } from "react"
 
 const TextContainer = styled.div`
     position: absolute;
@@ -17,13 +18,14 @@ const TextContainer = styled.div`
         text-align: center;
     }
 `
-export default function Intro() {
+export default function Intro({scrollRef}) {
+    const containerRef = useRef();
     return (
-        <FullScreenContainer background="#3a0ca3">
+        <FullScreenContainer background="#3a0ca3" ref={containerRef}>
             <TextContainer>
                 <AppearingText>{"Hi! I'm Artur Oborski and I'm frontend developer."}</AppearingText>
             </TextContainer>
-            <Scroll href="#about"/>
+            <Scroll scrollRef={scrollRef} containerRef={containerRef}/>
         </FullScreenContainer>
     )
 }

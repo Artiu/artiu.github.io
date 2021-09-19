@@ -12,7 +12,7 @@ const bounce = keyframes`
     }
 `
 
-export const Scroll = styled.a`
+const ScrollElement = styled.button`
     position: absolute;
     left: 50%;
     bottom: 5%;
@@ -42,3 +42,13 @@ export const Scroll = styled.a`
     }
     animation: ${bounce} 2s linear infinite;
 `
+export default function Scroll({scrollRef, containerRef}) {
+    const handleClick = () => {
+        scrollRef.current.scrollBy({
+            left: 0,
+            top: window.innerHeight + containerRef.current.getBoundingClientRect().top,
+            behavior: 'smooth'
+        })
+    }
+    return <ScrollElement onClick={handleClick}></ScrollElement>
+}
