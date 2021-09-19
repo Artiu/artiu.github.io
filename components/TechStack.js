@@ -19,9 +19,9 @@ const TechContainer = styled.div`
     }
 `
 export default function TechStack() {
-    const technologies = ["HTML", "CSS","JS", "SASS", "TailwindCSS", "Styled components", "ReactJS", "Redux", "NextJS", "Jest"]
+    const technologies = ["HTML", "CSS","JS", "SASS", "TailwindCSS", "Styled components", "ReactJS", "Redux", "NextJS", "Jest"];
     return (
-        <FullScreenContainer background = "#4361ee">
+        <FullScreenContainer background = "#4361ee" id="technologies">
             <MediumHeader>Tech stack</MediumHeader>
             <TechContainer>
             {technologies.map((technology, index) => {

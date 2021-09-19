@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 const Div = styled.div`
-    scroll-snap-align: start;
     background-color: #48cae4;
     display: flex;
     flex-wrap: wrap;

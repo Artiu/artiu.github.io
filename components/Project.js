@@ -7,9 +7,6 @@ const Div = styled.div`
     a > img {
         width: 100%;
         margin-top: 10px;
-        @media (max-width: 750px) {
-            width: 100%;
-        }
     }
     a:last-child > img{
         width: 50px;

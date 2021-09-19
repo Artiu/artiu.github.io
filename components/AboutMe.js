@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { FullScreenContainer } from "./styled-elements/FullScreenContainer";
 import { MediumHeader } from "./styled-elements/MediumHeader";
 import { useEffect, useState, useRef } from "react";
+import { Scroll } from "./ScrollElement";
 
 const Text = styled.p`
     font-size: 30px;
@@ -36,9 +37,8 @@ export default function AboutMe({scrollRef}) {
     const [isOnScreen, setIsOnScreen] = useState(false);
     
     const startElRef = useRef();
-
     const handleScroll = () => {
-        if(startElRef.current.getBoundingClientRect().top === 0) {
+        if(startElRef.current.getBoundingClientRect().top < 300) {
             setIsOnScreen(true);
             scrollRef.current.removeEventListener('scroll', handleScroll);
         }
@@ -49,8 +49,8 @@ export default function AboutMe({scrollRef}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <FullScreenContainer background="#480CA8">
-            <MediumHeader ref={startElRef}>About me</MediumHeader>
+        <FullScreenContainer background="#480CA8" id="about" ref={startElRef}>
+            <MediumHeader>About me</MediumHeader>
             {isOnScreen &&
             <>
                 <TextFromLeft>17 years old</TextFromLeft>
@@ -58,6 +58,7 @@ export default function AboutMe({scrollRef}) {
                 <TextFromLeft></TextFromLeft>
             </>
             }
+            <Scroll href="#technologies"/>
         </FullScreenContainer>
     )
 }

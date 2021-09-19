@@ -13,7 +13,10 @@ const Animation = keyframes`
   }
 `
 const Text = styled.p`
-  position: absolute;
+`
+const LastLetter = styled.span`
+  position: relative;
+  width: fit-content;
   ::after{
     position: absolute;
     content: '';
@@ -29,20 +32,26 @@ const Text = styled.p`
 
 export default function AppearingText({children}) {
     const wholeText = children.split('');
-    const [text, setText] = useState('');
+    const [text, setText] = useState({
+      text: '',
+      lastLetter: ''
+    });
     useEffect(() => {
         const interval = setInterval(() => {
         if(wholeText.length === 0){
             clearInterval(interval);
         }
         else{
-            const letter = wholeText.shift();
-            setText(prevText => prevText + letter);
+          const letter = wholeText.shift();
+          setText(prevText => ({
+            text: prevText.text + prevText.lastLetter,
+            lastLetter: letter
+          }));
         }
         }, 100)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
     return (
-        <Text>{text}</Text>
+        <Text>{text.text}<LastLetter>{text.lastLetter}</LastLetter></Text>
     )
 }

@@ -5,5 +5,4 @@ export const FullScreenContainer = styled.div`
     max-width: 100%;
     min-height: 100vh;
     background-color: ${props => props.background};
-    scroll-snap-align: start;
 `
