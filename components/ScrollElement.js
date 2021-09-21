@@ -50,5 +50,5 @@ export default function Scroll({scrollRef, containerRef}) {
             behavior: 'smooth'
         })
     }
-    return <ScrollElement onClick={handleClick}></ScrollElement>
+    return <ScrollElement onClick={handleClick} aria-label="Scroll down"></ScrollElement>
 }

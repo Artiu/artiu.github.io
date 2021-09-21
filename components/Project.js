@@ -28,6 +28,10 @@ const Header = styled.p`
 const P = styled.p`
     margin-top: 7px;
     font-size: 18px;
+    text-align: justify;
+    @media (max-width: 700px) {
+        font-size: 20px;
+    }
 `
 const A = styled.a`
     text-decoration: none;

@@ -10,6 +10,15 @@ import Footer from '../components/Footer';
 const Fullscreen = styled.div`
   height: 100vh;
   overflow:hidden auto;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #777D7D;
+    :hover{
+      background-color: #595E5E;
+    }
+  }
 `
 export default function Home() {
   const scrollEl = useRef();
@@ -17,8 +26,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Artur Oborski | Home</title>
-        <meta name="description" content="I'm frontend developer" />
+        <title>Artur Oborski | Frontend developer</title>
+        <meta name="description" content="React developer and creative person who likes application logic" />
+        <meta name="keyword" content="javascript, react, junior developer, portfolio" />
+        <meta property="og:title" content="Artur Oborski | Frontend Developer"/>
+        <meta property="og:description" content="React developer and creative person who likes application logic" />
+        <meta property="og:url" content="https://artiu.github.io" />
+        <meta property="og:type" content="website" />
       </Head>
       <Fullscreen ref={scrollEl}>
         <Intro scrollRef={scrollEl} />

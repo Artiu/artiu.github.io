@@ -7,7 +7,7 @@ import Scroll from "./ScrollElement";
 const Text = styled.p`
     font-size: 30px;
     text-align:center;
-    padding-block: 10px;
+    padding: 10px 20px;
 `
 const animationFromLeft = keyframes`
     65%{
@@ -27,13 +27,20 @@ const animationFromRight = keyframes`
 `
 const TextFromLeft = styled(Text)`
     transform: translateX(-100%);
-    animation: ${animationFromLeft} 2.5s ease-in forwards;
+    animation: ${animationFromLeft} 2.5s ${props => props.index * 1.5 + "s"} ease-in forwards;
+    @media (max-width: 1100px) {
+        animation: ${animationFromLeft} 1.5s ${props => props.index * 1.25 + "s"} ease-in forwards;
+    }
 `
 const TextFromRight = styled(Text)`
     transform: translateX(100%);
-    animation: ${animationFromRight} 2.5s 1.5s ease-in forwards;
+    animation: ${animationFromRight} 2.5s ${props => props.index * 1.5 + "s"} ease-in forwards;
+    @media (max-width: 1100px) {
+        animation: ${animationFromRight} 1.5s ${props => props.index * 1.25 + "s"} ease-in forwards;
+    }
 `
 export default function AboutMe({scrollRef}) {
+    const texts = ["Currently learning in high school","Creative person who likes application logic","Interested in frontend since 2019", "Big fan of JS and React"];
     const [isOnScreen, setIsOnScreen] = useState(false);
     
     const startElRef = useRef();
@@ -52,11 +59,12 @@ export default function AboutMe({scrollRef}) {
         <FullScreenContainer background="#480CA8" ref={startElRef}>
             <MediumHeader>About me</MediumHeader>
             {isOnScreen &&
-            <>
-                <TextFromLeft>17 years old</TextFromLeft>
-                <TextFromRight>currently learning in high school</TextFromRight>
-                <TextFromLeft></TextFromLeft>
-            </>
+                texts.map((text, index) => {
+                    return !(index % 2) ?
+                        <TextFromLeft key={index} index={index}>{text}</TextFromLeft>
+                        : 
+                        <TextFromRight key={index} index={index}>{text}</TextFromRight>
+                })
             }
             <Scroll scrollRef={scrollRef} containerRef={startElRef}/>
         </FullScreenContainer>

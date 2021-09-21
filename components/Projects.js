@@ -23,21 +23,21 @@ export default function Projects() {
             name: "Countries website",
             screen: "/countries-website.png",
             link: "https://github.com/Artiu/countries-website",
-            description: "I created countries website for Frontend Mentor challenge. User can search country by name and filter by region.",
+            description: "I created countries website for Frontend Mentor challenge. User can search country by name and filter by region. It was probably my first project with using external API.",
             liveLink: "https://artiu.github.io/countries-website"
         },
         {
             name: "Url shortener",
             screen: "/url-shortener.png",
             link: "https://github.com/Artiu/url-shortener",
-            description: "fkisfksfsfasjknafksjnfasjkajknm",
+            description: "Long links are big problem. On my website you can shorten these kind of links. In this project I used shrtco.de api.",
             liveLink: "https://artiu.github.io/url-shortener"
         },
         {
             name: "Diarybook",
             screen: "/diarybook.png",
             link: "https://github.com/Artiu/diarybook",
-            description: "fkisfksfsfasjknafksjnfasjkajknm",
+            description: "I created diarybook mainly for learning redux, but I think it might be useful. I used local storage for saving posts from user.",
             liveLink: "https://artiu.github.io/diarybook"
         }
     ];
