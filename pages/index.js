@@ -10,13 +10,16 @@ import Footer from '../components/Footer';
 const Fullscreen = styled.div`
   height: 100vh;
   overflow:hidden auto;
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #777D7D;
-    :hover{
-      background-color: #595E5E;
+  @media (min-width: 1000px)
+  {
+    ::-webkit-scrollbar {
+     width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #777D7D;
+      :hover{
+        background-color: #595E5E;
+      }
     }
   }
 `
