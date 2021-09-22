@@ -1,4 +1,6 @@
 module.exports = {
-  reactStrictMode: true,
-  assetPrefix: './'
+  env: {
+    PUBLIC_URL: "https://artiu.github.io",
+    assetPrefix: './'
+  }
 }
