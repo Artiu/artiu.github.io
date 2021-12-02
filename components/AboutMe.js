@@ -40,7 +40,7 @@ const TextFromRight = styled(Text)`
     }
 `
 export default function AboutMe({scrollRef}) {
-    const texts = ["Currently learning in high school","Creative person who likes application logic","Interested in frontend since 2019", "Big fan of JS and React"];
+    const texts = ["Self-taught developer", "Currently learning in high school","Creative person who likes application logic","Interested in frontend since 2019", "Big fan of JS and React"];
     const [isOnScreen, setIsOnScreen] = useState(false);
     
     const startElRef = useRef();
