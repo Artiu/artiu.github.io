@@ -1,6 +1,10 @@
 import Head from "next/head";
+import Contact from "../components/Contact";
+import HomeComponent from "../components/HomeComponent";
 import Navbar from "../components/Navbar";
+import Projects from "../components/Projects";
 import Sidebar from "../components/Sidebar";
+import Techstack from "../components/Techstack";
 
 export default function Home() {
     return (
@@ -25,6 +29,10 @@ export default function Home() {
             </Head>
             <Navbar />
             <Sidebar />
+            <HomeComponent />
+            <Projects />
+            <Techstack />
+            <Contact />
         </div>
     );
 }
