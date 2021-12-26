@@ -12,15 +12,15 @@ export default function Techstack() {
         "Jest",
     ];
     return (
-        <div>
-            <h2 className="text-2xl">Techstack</h2>
-            <div>
+        <div id="techstack" className="py-3">
+            <h2 className="text-3xl text-center mb-6">Techstack</h2>
+            <div className="flex flex-wrap max-w-3xl mx-auto gap-8">
                 {technologies.map((name, index) => {
-                    const imagePath = "/" + name.toLowerCase() + ".svg";
+                    const imagePath = "/" + name.toLowerCase().replace(/ /g, "") + ".svg";
                     return (
                         <div key={index}>
-                            <img src={imagePath} alt={`${name} logo`} />
-                            <p>{name}</p>
+                            <img src={imagePath} alt={`${name} logo`} className="w-56" />
+                            <p className="text-center mt-3">{name}</p>
                         </div>
                     );
                 })}

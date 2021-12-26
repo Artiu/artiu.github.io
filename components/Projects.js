@@ -1,4 +1,8 @@
-export default function Projects() {
+import { useEffect, useRef } from "react";
+import useIntersectionObserver from "../hooks/useIntersectionObserver";
+import Project from "./Project";
+
+export default function Projects({ setOnScreen }) {
     const projects = [
         {
             name: "Anime quotes",
@@ -33,24 +37,22 @@ export default function Projects() {
             liveLink: "https://artiu.github.io/diarybook",
         },
     ];
+    const projectsRef = useRef();
+    const isOnScreen = useIntersectionObserver(projectsRef);
+
+    useEffect(() => {
+        if (isOnScreen) {
+            setOnScreen("projects");
+        }
+    }, [isOnScreen]);
     return (
-        <div>
-            <h2 className="text-2xl">My projects</h2>
-            <div>
-                {projects.map(({ name, liveLink, projectLink, description, screen }, index) => {
-                    return (
-                        <div key={index}>
-                            <p>{name}</p>
-                            <a href={liveLink}>
-                                <img src={screen} alt={`${name} screenshot`} />
-                            </a>
-                            <p>{description}</p>
-                            <a href={projectLink}>
-                                <img src="/github.png" alt="Github logo" />
-                                <p>Github</p>
-                            </a>
-                        </div>
-                    );
+        <div className="py-3" ref={projectsRef}>
+            <h2 className="text-3xl text-center mb-6" id="projects">
+                My projects
+            </h2>
+            <div className="flex flex-wrap justify-center gap-6">
+                {projects.map((project, index) => {
+                    return <Project key={index} project={project} />;
                 })}
             </div>
         </div>

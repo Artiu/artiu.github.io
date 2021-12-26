@@ -9,7 +9,7 @@ export default function Sidebar() {
         "Big fan of JS and React",
     ];
     return (
-        <div>
+        <div className="max-w-xs p-3 flex flex-col items-center gap-3">
             <Avatar />
             <ul>
                 {texts.map((item, index) => {
