@@ -21,7 +21,7 @@ export default function Techstack({ setOnScreen }) {
         }
     }, [isOnScreen]);
     return (
-        <div id="techstack" className="py-5 border-t border-black" ref={techStackRef}>
+        <div id="techstack" className="py-5 px-3" ref={techStackRef}>
             <h2 className="text-3xl text-center mb-6">Techstack</h2>
             <div className="flex flex-wrap max-w-3xl mx-auto gap-8 justify-center">
                 {technologies.map((name, index) => {

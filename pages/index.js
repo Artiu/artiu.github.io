@@ -4,11 +4,15 @@ import Contact from "../components/Contact";
 import HomeComponent from "../components/HomeComponent";
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
-import Sidebar from "../components/Sidebar";
 import Techstack from "../components/Techstack";
 
 export default function Home() {
     const [onScreen, setOnScreen] = useState("home");
+
+    const scrollToView = (id) => {
+        const top = document.getElementById(id).offsetTop - 66;
+        window.scrollTo(0, top);
+    };
     return (
         <div>
             <Head>
@@ -29,14 +33,13 @@ export default function Home() {
                 <meta property="og:type" content="website" />
                 <title>Artur Oborski | Frontend developer</title>
             </Head>
-            <Navbar onScreen={onScreen} />
-            <div className="flex border-t border-black">
-                <Sidebar />
-                <HomeComponent setOnScreen={setOnScreen} />
+            <HomeComponent setOnScreen={setOnScreen} scroll={() => scrollToView("techstack")} />
+            <div>
+                <Navbar onScreen={onScreen} scrollToView={scrollToView} />
+                <Techstack setOnScreen={setOnScreen} />
+                <Projects setOnScreen={setOnScreen} />
+                <Contact setOnScreen={setOnScreen} />
             </div>
-            <Techstack setOnScreen={setOnScreen} />
-            <Projects setOnScreen={setOnScreen} />
-            <Contact setOnScreen={setOnScreen} />
         </div>
     );
 }

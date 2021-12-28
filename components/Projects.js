@@ -46,7 +46,7 @@ export default function Projects({ setOnScreen }) {
         }
     }, [isOnScreen]);
     return (
-        <div className="py-5 flex flex-col gap-6 border-t border-black" ref={projectsRef}>
+        <div className="py-5 flex flex-col gap-6" ref={projectsRef}>
             <h2 className="text-3xl text-center" id="projects">
                 My projects
             </h2>

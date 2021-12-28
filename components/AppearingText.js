@@ -26,7 +26,7 @@ export default function AppearingText({ children }) {
     return (
         <p>
             {text.text}
-            <span className="relative after:h-full after:absolute after:top-0 after:left-6 after:w-1/6 after:bg-black/80 after:animate-disappearing">
+            <span className="relative after:h-full after:absolute after:top-0 after:left-6 after:w-1/6 after:bg-white after:animate-disappearing">
                 {text.lastLetter}
             </span>
         </p>
