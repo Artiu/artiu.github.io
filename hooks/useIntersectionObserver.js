@@ -6,7 +6,7 @@ export default function useIntersectionObserver(ref) {
         if (ref?.current) {
             const observer = new IntersectionObserver(
                 (item) => {
-                    if (item[0].isIntersecting === true) {
+                    if (item[0].isIntersecting) {
                         setIsOnScreen(true);
                     } else {
                         setIsOnScreen(false);

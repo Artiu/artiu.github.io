@@ -30,15 +30,13 @@ export default function Home() {
                 <title>Artur Oborski | Frontend developer</title>
             </Head>
             <Navbar onScreen={onScreen} />
-            <div className="min-h-screen">
-                <div className="flex">
-                    <Sidebar />
-                    <HomeComponent setOnScreen={setOnScreen} />
-                </div>
+            <div className="flex border-t border-black">
+                <Sidebar />
+                <HomeComponent setOnScreen={setOnScreen} />
             </div>
-            <Techstack />
+            <Techstack setOnScreen={setOnScreen} />
             <Projects setOnScreen={setOnScreen} />
-            <Contact />
+            <Contact setOnScreen={setOnScreen} />
         </div>
     );
 }

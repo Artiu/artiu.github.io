@@ -18,12 +18,17 @@ export default function AppearingText({ children }) {
                 }));
             }
         }, 100);
+        return () => {
+            clearInterval(interval);
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
         <p>
             {text.text}
-            <span>{text.lastLetter}</span>
+            <span className="relative after:h-full after:absolute after:top-0 after:left-6 after:w-1/6 after:bg-black/80 after:animate-disappearing">
+                {text.lastLetter}
+            </span>
         </p>
     );
 }

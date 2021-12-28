@@ -46,8 +46,8 @@ export default function Projects({ setOnScreen }) {
         }
     }, [isOnScreen]);
     return (
-        <div className="py-3" ref={projectsRef}>
-            <h2 className="text-3xl text-center mb-6" id="projects">
+        <div className="py-5 flex flex-col gap-6 border-t border-black" ref={projectsRef}>
+            <h2 className="text-3xl text-center" id="projects">
                 My projects
             </h2>
             <div className="flex flex-wrap justify-center gap-6">
@@ -55,6 +55,13 @@ export default function Projects({ setOnScreen }) {
                     return <Project key={index} project={project} />;
                 })}
             </div>
+            <p className="text-center text-xl">
+                And more on my{" "}
+                <a href="https://github.com/Artiu" className="text-blue-600 hover:text-blue-800">
+                    Github
+                </a>
+                ...
+            </p>
         </div>
     );
 }

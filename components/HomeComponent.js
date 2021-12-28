@@ -13,10 +13,18 @@ export default function HomeComponent({ setOnScreen }) {
     }, [isOnScreen]);
 
     return (
-        <div id="home" ref={homeRef}>
-            <h1 className="text-3xl">
-                <AppearingText>{"Hi! I'm Artur Oborski and I'm frontend developer"}</AppearingText>
-            </h1>
+        <div
+            id="home"
+            className="w-full min-h-home bg-[url('/background2.jpg')] bg-cover bg-bottom"
+            ref={homeRef}
+        >
+            <div className="h-full bg-white/20">
+                <h1 className="text-3xl text-center pt-3">
+                    <AppearingText>
+                        {"Hi! I'm Artur Oborski and I'm frontend developer"}
+                    </AppearingText>
+                </h1>
+            </div>
         </div>
     );
 }
