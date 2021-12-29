@@ -1,12 +1,11 @@
 import Head from "next/head";
-import { useEffect, useRef } from "react";
-import { useState } from "react/cjs/react.development";
+import { useEffect, useRef, useState } from "react";
 import Contact from "../components/Contact";
 import HomeComponent from "../components/HomeComponent";
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
 import Techstack from "../components/Techstack";
-import { navbarHeight } from "../contants"
+import { navbarHeight } from "../contants";
 
 export default function Home() {
     const [onScreen, setOnScreen] = useState("home");
