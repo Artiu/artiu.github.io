@@ -1,49 +1,95 @@
-import Head from 'next/head'
-import styled from 'styled-components';
-import Intro from '../components/Intro';
-import AboutMe from '../components/AboutMe';
-import { useRef } from 'react';
-import TechStack from '../components/TechStack';
-import Projects from '../components/Projects';
-import Footer from '../components/Footer';
+import Head from "next/head";
+import { useEffect, useRef } from "react";
+import { useState } from "react/cjs/react.development";
+import Contact from "../components/Contact";
+import HomeComponent from "../components/HomeComponent";
+import Navbar from "../components/Navbar";
+import Projects from "../components/Projects";
+import Techstack from "../components/Techstack";
+import { navbarHeight } from "../contants"
 
-const Fullscreen = styled.div`
-  height: 100vh;
-  overflow:hidden auto;
-  @media (min-width: 1000px)
-  {
-    ::-webkit-scrollbar {
-     width: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: #777D7D;
-      :hover{
-        background-color: #595E5E;
-      }
-    }
-  }
-`
 export default function Home() {
-  const scrollEl = useRef();
-  
-  return (
-    <>
-      <Head>
-        <title>Artur Oborski | Frontend developer</title>
-        <meta name="description" content="React developer and creative person who likes application logic" />
-        <meta name="keyword" content="javascript, react, junior developer, portfolio" />
-        <meta property="og:title" content="Artur Oborski | Frontend Developer"/>
-        <meta property="og:description" content="React developer and creative person who likes application logic" />
-        <meta property="og:url" content="https://artiu.github.io" />
-        <meta property="og:type" content="website" />
-      </Head>
-      <Fullscreen ref={scrollEl}>
-        <Intro scrollRef={scrollEl} />
-        <AboutMe scrollRef={scrollEl} />
-        <TechStack />
-        <Projects />
-        <Footer />
-      </Fullscreen>
-    </>
-  )
+    const [onScreen, setOnScreen] = useState("home");
+    const home = useRef();
+    const techstack = useRef();
+    const projects = useRef();
+    const contact = useRef();
+
+    const setWhatIsOnScreen = () => {
+        const object = { home, techstack, projects, contact };
+        const scrollPos = window.scrollY;
+        const screen = window.innerHeight;
+        if (document.body.clientHeight - 20 < scrollPos + screen) {
+            setOnScreen("contact");
+            return;
+        }
+        for (let property in object) {
+            const rects = object[property].current.getBoundingClientRect();
+            if (rects.top - navbarHeight <= 0 && rects.bottom + navbarHeight > 0) {
+                setOnScreen(property);
+            }
+        }
+    };
+    useEffect(() => {
+        window.addEventListener("scroll", setWhatIsOnScreen);
+        return () => {
+            window.removeEventListener("scroll", setWhatIsOnScreen);
+        };
+    }, []);
+    const scrollToView = (name) => {
+        const scroll = (offset) => {
+            scrollTo(0, offset - navbarHeight);
+        };
+        switch (name) {
+            case "home":
+                scroll(home.current.offsetTop);
+                break;
+            case "techstack":
+                scroll(techstack.current.offsetTop);
+                break;
+            case "projects":
+                scroll(projects.current.offsetTop);
+                break;
+            case "contact":
+                scroll(contact.current.offsetTop);
+                break;
+        }
+    };
+    return (
+        <div>
+            <Head>
+                <meta
+                    name="description"
+                    content="React developer and creative person who likes application logic"
+                />
+                <meta
+                    name="keyword"
+                    content="Artur Oborski, javascript, react, junior developer, portfolio"
+                />
+                <meta property="og:title" content="Artur Oborski | Frontend Developer" />
+                <meta
+                    property="og:description"
+                    content="React developer and creative person who likes application logic"
+                />
+                <meta property="og:url" content="https://artiu.github.io" />
+                <meta property="og:type" content="website" />
+                <title>Artur Oborski | Frontend developer</title>
+            </Head>
+            <div ref={home}>
+                <HomeComponent scroll={() => scrollToView("techstack")} />
+            </div>
+            <div>
+                <Navbar onScreen={onScreen} scrollToView={scrollToView} />
+                <div ref={techstack}>
+                    <Techstack />
+                </div>
+                <div ref={projects}>
+                    <Projects />
+                </div>
+                <div ref={contact}>
+                    <Contact />
+                </div>
+            </div>
+        </div>
+    );
 }

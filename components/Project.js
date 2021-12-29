@@ -1,62 +1,58 @@
-import styled from "styled-components"
+import { useState } from "react";
 
-const Div = styled.div`
-    max-width: 720px;
-    padding: 10px 20px;
-    transition: all 0.3s linear;
-    a > img {
-        width: 100%;
-        margin-top: 10px;
-    }
-    a:last-child > img{
-        width: 50px;
-        height: auto;
-        margin-top: 0px;
-    }
-    :hover {
-        transform: scale(1.1);
-        @media (max-width: 750px) {
-            transform: none;
+export default function Project({ project: { name, liveLink, projectLink, screen, description } }) {
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+    const togglePreviewOpen = () => {
+        if (!isPreviewOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.removeProperty("overflow");
         }
-    }
-`
-const Header = styled.p`
-    font-size: 30px;
-    font-weight: 600;
-    text-align: center;
-`
-const P = styled.p`
-    margin-top: 7px;
-    font-size: 18px;
-    text-align: justify;
-    @media (max-width: 700px) {
-        font-size: 20px;
-    }
-`
-const A = styled.a`
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    padding-right: 13px;
-    padding-block: 5px;
-    background-color: #2968FF;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #0d2739;
-    margin:0px auto;
-    margin-top: 15px;
-    :hover {
-        background-color: #2541FA;
-    }
-`
-export default function Project({name, screen, description, link, liveLink}) {
+        setIsPreviewOpen((prev) => !prev);
+    };
+
     return (
-        <Div>
-            <Header>{name}</Header>
-            <a href={liveLink}><img src={screen} alt={`${name} screenshot`}/></a>
-            <P>{description}</P>
-            <A href={link}><img src="/github.png" alt="Github logo"/><p>Github</p></A>
-        </Div>
-    )
+        <>
+            {isPreviewOpen && (
+                <div
+                    onClick={togglePreviewOpen}
+                    className="fixed left-0 top-0 w-screen h-screen bg-white/75 flex flex-col gap-2 justify-center items-center z-50"
+                >
+                    <button className="absolute top-4 right-4 rounded-full text-xl w-10 h-10 flex items-center justify-center shadow-2xl bg-neutral-300 hover:bg-neutral-400">
+                        x
+                    </button>
+                    <iframe
+                        src={liveLink}
+                        className="h-full max-h-[80%] w-full max-w-[80%] bg-white"
+                    />
+                    <p className="text-lg">
+                        Website link:{" "}
+                        <a href={liveLink} className="text-blue-500 hover:text-blue-600">
+                            {liveLink}
+                        </a>
+                    </p>
+                </div>
+            )}
+            <div className="max-w-lg rounded-lg shadow-xl px-6 py-3 flex flex-col justify-between gap-3 transition-all hover:scale-105 bg-white">
+                <div className="flex flex-col gap-3">
+                    <p className="text-center font-bold text-2xl">{name}</p>
+                    <button
+                        onClick={togglePreviewOpen}
+                        className="relative hover:after:bg-white/75 hover:after:content-['Preview'] after:absolute after:left-0 after:top-0 after:h-full after:w-full after:flex after:justify-center after:items-center text-2xl"
+                    >
+                        <img src={screen} alt={`${name} screenshot`} />
+                    </button>
+                    <p>{description}</p>
+                </div>
+                <a
+                    href={projectLink}
+                    className="flex gap-1 items-center shadow-sm p-2 pr-4 w-fit bg-neutral-200 hover:bg-neutral-300"
+                >
+                    <img src="/github.png" alt="Github logo" className="w-12" />
+                    <p>Github</p>
+                </a>
+            </div>
+        </>
+    );
 }
