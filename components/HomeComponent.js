@@ -1,23 +1,8 @@
-import { useEffect, useRef } from "react";
 import AppearingText from "./AppearingText";
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
 
-export default function HomeComponent({ setOnScreen, scroll }) {
-    const homeRef = useRef();
-    const isOnScreen = useIntersectionObserver(homeRef);
-
-    useEffect(() => {
-        if (isOnScreen) {
-            setOnScreen("home");
-        }
-    }, [isOnScreen]);
-
+export default function HomeComponent({ scroll }) {
     return (
-        <div
-            id="home"
-            className="w-full min-h-screen flex flex-col items-center justify-center gap-5 bg-black/90 text-white"
-            ref={homeRef}
-        >
+        <div className="w-full min-h-screen flex flex-col items-center justify-center gap-5 bg-black/90 text-white">
             <h1 className="text-3xl text-center px-2">
                 <AppearingText>{"Hi!\nI'm Artur Oborski and I'm frontend developer"}</AppearingText>
             </h1>

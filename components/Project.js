@@ -19,6 +19,9 @@ export default function Project({ project: { name, liveLink, projectLink, screen
                     onClick={togglePreviewOpen}
                     className="fixed left-0 top-0 w-screen h-screen bg-white/75 flex justify-center items-center z-50"
                 >
+                    <button className="absolute top-4 right-4 rounded-full text-xl w-10 h-10 flex items-center justify-center shadow-2xl bg-neutral-300 hover:bg-neutral-400">
+                        x
+                    </button>
                     <iframe
                         src={liveLink}
                         className="h-full max-h-[80%] w-full max-w-[80%] bg-white"

@@ -1,8 +1,6 @@
-import { useEffect, useRef } from "react";
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import Project from "./Project";
 
-export default function Projects({ setOnScreen }) {
+export default function Projects() {
     const projects = [
         {
             name: "Anime quotes",
@@ -37,16 +35,8 @@ export default function Projects({ setOnScreen }) {
             liveLink: "https://artiu.github.io/diarybook",
         },
     ];
-    const projectsRef = useRef();
-    const isOnScreen = useIntersectionObserver(projectsRef);
-
-    useEffect(() => {
-        if (isOnScreen) {
-            setOnScreen("projects");
-        }
-    }, [isOnScreen]);
     return (
-        <div className="py-5 flex flex-col gap-6" ref={projectsRef}>
+        <div className="py-5 flex flex-col gap-6">
             <h2 className="text-3xl text-center" id="projects">
                 My projects
             </h2>
