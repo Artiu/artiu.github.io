@@ -24,9 +24,9 @@ export default function Project({ project: { name, liveLink, projectLink, screen
                     </button>
                     <iframe
                         src={liveLink}
-                        className="h-full max-h-[80%] w-full max-w-[80%] bg-white"
+                        className="h-full max-h-[400px] md:max-h-[80%] w-full max-w-full md:max-w-[80%] bg-white"
                     />
-                    <p className="text-lg">
+                    <p className="text-lg text-center">
                         Website link:{" "}
                         <a href={liveLink} className="text-blue-500 hover:text-blue-600">
                             {liveLink}
