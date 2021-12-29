@@ -3,6 +3,14 @@ import Project from "./Project";
 export default function Projects() {
     const projects = [
         {
+            name: "Send your work",
+            screen: "/send-your-work.png",
+            projectLink: "https://github.com/Elektron-team",
+            description:
+                "This project was created for Hackheroes competition. Website allows you to send files to teacher's mail without require to login to your mail account, because you can log in with qr code on our website. It was my first bigger project, because this app includes live text chat, file sending, file preview and more interesting functionalities.",
+            liveLink: "https://send-your.works",
+        },
+        {
             name: "Anime quotes",
             screen: "/animequotes.png",
             projectLink: "https://github.com/Artiu/anime-quotes-website",
@@ -38,7 +46,7 @@ export default function Projects() {
     return (
         <div className="py-5 flex flex-col gap-6">
             <h2 className="text-3xl text-center" id="projects">
-                My projects
+                Projects
             </h2>
             <div className="flex flex-wrap justify-center gap-6">
                 {projects.map((project, index) => {

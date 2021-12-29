@@ -17,7 +17,7 @@ export default function Project({ project: { name, liveLink, projectLink, screen
             {isPreviewOpen && (
                 <div
                     onClick={togglePreviewOpen}
-                    className="fixed left-0 top-0 w-screen h-screen bg-white/75 flex justify-center items-center z-50"
+                    className="fixed left-0 top-0 w-screen h-screen bg-white/75 flex flex-col gap-2 justify-center items-center z-50"
                 >
                     <button className="absolute top-4 right-4 rounded-full text-xl w-10 h-10 flex items-center justify-center shadow-2xl bg-neutral-300 hover:bg-neutral-400">
                         x
@@ -26,6 +26,12 @@ export default function Project({ project: { name, liveLink, projectLink, screen
                         src={liveLink}
                         className="h-full max-h-[80%] w-full max-w-[80%] bg-white"
                     />
+                    <p className="text-lg">
+                        Website link:{" "}
+                        <a href={liveLink} className="text-blue-500 hover:text-blue-600">
+                            {liveLink}
+                        </a>
+                    </p>
                 </div>
             )}
             <div className="max-w-lg rounded-lg shadow-xl px-6 py-3 flex flex-col justify-between gap-3 transition-all hover:scale-105 bg-white">

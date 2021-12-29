@@ -6,6 +6,7 @@ import HomeComponent from "../components/HomeComponent";
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
 import Techstack from "../components/Techstack";
+import { navbarHeight } from "../contants"
 
 export default function Home() {
     const [onScreen, setOnScreen] = useState("home");
@@ -18,14 +19,13 @@ export default function Home() {
         const object = { home, techstack, projects, contact };
         const scrollPos = window.scrollY;
         const screen = window.innerHeight;
-        const navbarHeight = 67;
         if (document.body.clientHeight - 20 < scrollPos + screen) {
             setOnScreen("contact");
             return;
         }
         for (let property in object) {
             const rects = object[property].current.getBoundingClientRect();
-            if (rects.top - navbarHeight < 0 && rects.bottom + navbarHeight > 0) {
+            if (rects.top - navbarHeight <= 0 && rects.bottom + navbarHeight > 0) {
                 setOnScreen(property);
             }
         }
@@ -38,7 +38,6 @@ export default function Home() {
     }, []);
     const scrollToView = (name) => {
         const scroll = (offset) => {
-            const navbarHeight = 66;
             scrollTo(0, offset - navbarHeight);
         };
         switch (name) {
